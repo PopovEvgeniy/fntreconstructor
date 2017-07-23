@@ -48,6 +48,6 @@ You can send me a letter to tuzik87@inbox.ru.
 
 Version history
 
-0.1 — Innitial version.
-0.2 - 0.5 — Small changes.
+0.1 â€” Initial version.
+0.2 - 0.5 â€” Small changes.
 0.6 - Source code was improved. Linux support has been added.
