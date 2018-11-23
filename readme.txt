@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.6.3
+                                 Version 0.6.3.1
 
 System requirement
 
@@ -39,8 +39,8 @@ Follow this steps:
 1.Extract content of source code archive.
 2.Open terminal and go to source code directory.
 3.
-Run for install: make install
-Run for uninstall: make uninstall
+Run as root for install: make install
+Run as root for uninstall: make uninstall
 
 Contact
 
@@ -54,3 +54,4 @@ Version history
 0.6.0.1 – Documentation was updated.
 0.6.1 — 0.6.2 - Small changes.
 0.6.3 - Command line arguments handling was improved.
+0.6.3.1 - Makefile was updated.
