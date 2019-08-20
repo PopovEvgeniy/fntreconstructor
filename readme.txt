@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.6.3.1
+                                 Version 0.6.4
 
 System requirement
 
@@ -17,9 +17,10 @@ Give 3 command line arguments for compile a font:text file name, graphic file na
 Exit codes
 
 0 - Operation successfully complete.
-1 - Can't allocate memory.
-2 - File operation error.
-3 - Invalid format.
+1 - Can't open input file.
+2 - Can't create output file.
+3 - Can't allocate memory.
+4 - Invalid format.
 
 License
 
@@ -55,3 +56,4 @@ Version history
 0.6.1 — 0.6.2 - Small changes.
 0.6.3 - Command line arguments handling was improved.
 0.6.3.1 - Makefile was updated.
+0.6.4 - Small changes.
