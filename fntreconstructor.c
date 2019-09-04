@@ -20,8 +20,10 @@ char *get_string_memory(const size_t length);
 size_t get_extension_position(const char *source);
 char *get_short_name(const char *name);
 char* get_name(const char *name,const char *ext);
-FNT prepare_head();
+void check_signature(const char *signature);
 FNT read_fnt_head(FILE *file);
+void write_head(const FNT head,FILE *output);
+FNT prepare_head();
 void decompile_fnt(const char *fnt_file_name);
 void compile_fnt(const char *pcx_name,const char *text_file,const char *fnt_file);
 
@@ -53,7 +55,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.6.4");
+ puts("Version 0.6.5");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2019 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
@@ -203,7 +205,26 @@ char* get_name(const char *name,const char *ext)
  return strcat(result,ext);
 }
 
-void write_head(FNT head,FILE *output)
+void check_signature(const char *signature)
+{
+ if (strcmp(signature,"ElecbyteFnt")!=0)
+ {
+  putchar('\n');
+  puts("Bad signature of a font file");
+  exit(4);
+ }
+
+}
+
+FNT read_fnt_head(FILE *file)
+{
+ FNT fnt;
+ fread(&fnt,sizeof(FNT),1,file);
+ check_signature(fnt.signature);
+ return fnt;
+}
+
+void write_head(const FNT head,FILE *output)
 {
  fwrite(&head,sizeof(FNT),1,output);
 }
@@ -216,19 +237,6 @@ FNT prepare_head()
  strncpy(fnt_head.comment,"This font is created by FONT BULDER    ",40);
  fnt_head.pcx_offset=(unsigned long int)sizeof(FNT);
  return fnt_head;
-}
-
-FNT read_fnt_head(FILE *file)
-{
- FNT fnt;
- fread(&fnt,sizeof(FNT),1,file);
- if (strcmp(fnt.signature,"ElecbyteFnt")!=0)
- {
-  putchar('\n');
-  puts("Bad signature of a font file");
-  exit(4);
- }
- return fnt;
 }
 
 void decompile_fnt(const char *fnt_file_name)
