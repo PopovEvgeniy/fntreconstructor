@@ -55,8 +55,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.6.5");
- puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2019 years");
+ puts("Version 0.6.6");
+ puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -127,7 +127,7 @@ void data_dump(FILE *input,FILE *output,const size_t length)
  for (index=0;index<length;++index)
  {
   fread(&data,sizeof(unsigned char),1,input);
-  fwrite(&data,sizeof(unsigned char),1,input);
+  fwrite(&data,sizeof(unsigned char),1,output);
  }
 
 }
