@@ -22,7 +22,7 @@ char *get_short_name(const char *name);
 char* get_name(const char *name,const char *ext);
 void check_signature(const char *signature);
 FNT read_fnt_head(FILE *file);
-void write_head(const FNT head,FILE *output);
+void write_head(const FNT *head,FILE *output);
 FNT prepare_head();
 void decompile_fnt(const char *fnt_file_name);
 void compile_fnt(const char *pcx_name,const char *text_file,const char *fnt_file);
@@ -55,7 +55,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.6.6");
+ puts("Version 0.6.7");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2020 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
@@ -224,9 +224,9 @@ FNT read_fnt_head(FILE *file)
  return fnt;
 }
 
-void write_head(const FNT head,FILE *output)
+void write_head(const FNT *head,FILE *output)
 {
- fwrite(&head,sizeof(FNT),1,output);
+ fwrite(head,sizeof(FNT),1,output);
 }
 
 FNT prepare_head()
@@ -276,7 +276,7 @@ void compile_fnt(const char *pcx_name,const char *text_file,const char *fnt_file
  head.text_size=get_file_size(input);
  fclose(input);
  output=create_output_file(fnt_file);
- write_head(head,output);
+ write_head(&head,output);
  input=open_input_file(pcx_name);
  data_dump(input,output,(size_t)head.pcx_size);
  fclose(input);

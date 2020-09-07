@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.6.6
+                                 Version 0.6.7
 
 System requirement
 
@@ -57,4 +57,4 @@ Version history
 0.6.3 - Command line arguments handling was improved.
 0.6.3.1 - Makefile was updated.
 0.6.4 - 0.6.5 - Small changes.
-0.6.6 - Small bug was fixed.
+0.6.6 - 0.6.7 - Small bug was fixed.
