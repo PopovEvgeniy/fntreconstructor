@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.6.7
+                                 Version 0.6.9
 
 System requirement
 
@@ -19,8 +19,9 @@ Exit codes
 0 - Operation successfully complete.
 1 - Can't open input file.
 2 - Can't create output file.
-3 - Can't allocate memory.
-4 - Invalid format.
+3 - Can't jump to target offset.
+4 - Can't allocate memory.
+5 - Invalid format.
 
 License
 
@@ -58,3 +59,4 @@ Version history
 0.6.3.1 - Makefile was updated.
 0.6.4 - 0.6.5 - Small changes.
 0.6.6 - 0.6.7 - Small bug was fixed.
+0.6.8 - 0.6.9 - Small changes.

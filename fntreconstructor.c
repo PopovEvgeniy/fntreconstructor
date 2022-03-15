@@ -55,8 +55,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.6.7");
- puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2020 years");
+ puts("Version 0.6.9");
+ puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2022 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
 }
 
@@ -81,7 +81,13 @@ void show_compile_message()
 
 void go_offset(FILE *file,const unsigned long int offset)
 {
- fseek(file,offset,SEEK_SET);
+ if (fseek(file,offset,SEEK_SET)!=0)
+ {
+  putchar('\n');
+  puts("Can't jump to target offset");
+  exit(3);
+ }
+
 }
 
 unsigned long int get_file_size(FILE *file)
@@ -165,7 +171,7 @@ char *get_string_memory(const size_t length)
  {
   putchar('\n');
   puts("Can't allocate memory");
-  exit(3);
+  exit(4);
  }
  return memory;
 }
@@ -211,7 +217,7 @@ void check_signature(const char *signature)
  {
   putchar('\n');
   puts("Bad signature of a font file");
-  exit(4);
+  exit(5);
  }
 
 }
