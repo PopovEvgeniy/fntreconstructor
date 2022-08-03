@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.6.9.1
+                                 Version 0.6.9.2
 
 System requirement
 
@@ -31,7 +31,7 @@ Source code
 
 The program source code compiled under Open Watcom.
 But you can do it under any modern C compiler.
-Source code can be compiled for wide range operation systems, but you need to create makefile or build script by yourself.
+Source code can be compiled for wide range operating systems, but you need to create makefile or build script by yourself.
 I provide only two things: compiled binary file for Windows and makefile for Linux.
 
 Install and uninstall under Linux
@@ -60,4 +60,4 @@ Version history
 0.6.4 - 0.6.5 - Small changes.
 0.6.6 - 0.6.7 - Small bug fixed.
 0.6.8 - 0.6.9 - Small changes.
-0.6.9.1 - Makefile updated.
+0.6.9.1 - 0.6.9.2 - Makefile updated.
