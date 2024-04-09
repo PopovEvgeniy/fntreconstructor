@@ -1,7 +1,4 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "fntreconstructor.h"
 #include "format.h"
 
 void show_intro();
@@ -50,8 +47,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.7.2");
- puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2022 years");
+ puts("Version 0.7.3");
+ puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2024 years");
  puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
