@@ -29,12 +29,12 @@ int main(int argc, char *argv[])
   case 2:
   puts("Extracting a font data...");
   decompile_fnt(argv[1]);
-  puts("Work finish");
+  puts("The work has been finished");
   break;
   case 4:
   puts("Creating a font file.Please wait...");
   compile_fnt(argv[1],argv[2],argv[3]);
-  puts("Work finish");
+  puts("The work has been finished");
   break;
   default:
   command_line_help();
@@ -49,22 +49,22 @@ void show_intro()
  puts("FNT RECONSTRUCTOR");
  puts("Version 0.7.3");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2024 years");
- puts("This program distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
 
 void command_line_help()
 {
- puts("You give a wrong command line arguments!");
- puts("Command line argument for decompiling a font: font file");
- puts("Command line arguments for compiling a font: graphic file, text file, font file");
+ puts("You give a wrong command-line arguments!");
+ puts("The command-line argument for decompiling a font: a font file");
+ puts("The command-line arguments for compiling a font: a graphic file, a text file, and the font file");
 }
 
 void go_offset(FILE *file,const unsigned long int offset)
 {
  if (fseek(file,offset,SEEK_SET)!=0)
  {
-  puts("Can't jump to target offset");
+  puts("Can't jump to the target offset");
   exit(3);
  }
 
@@ -85,7 +85,7 @@ FILE *open_input_file(const char *name)
  target=fopen(name,"rb");
  if (target==NULL)
  {
-  puts("Can't open input file");
+  puts("Can't open the input file");
   exit(1);
  }
  return target;
@@ -97,7 +97,7 @@ FILE *create_output_file(const char *name)
  target=fopen(name,"wb");
  if (target==NULL)
  {
-  puts("Can't create ouput file");
+  puts("Can't create the ouput file");
   exit(2);
  }
  return target;
@@ -192,7 +192,7 @@ void check_signature(const char *signature)
 {
  if (strcmp(signature,"ElecbyteFnt")!=0)
  {
-  puts("Bad signature of a font file");
+  puts("The bad signature of a font file");
   exit(5);
  }
 
@@ -216,7 +216,7 @@ FNT prepare_head()
  FNT fnt_head;
  memset(&fnt_head,0,sizeof(FNT));
  strncpy(fnt_head.signature,"ElecbyteFnt",12);
- strncpy(fnt_head.comment,"This font is created by FONT BULDER    ",40);
+ strncpy(fnt_head.comment,"This font was created by FONT BULDER   ",40);
  fnt_head.pcx_offset=(unsigned long int)sizeof(FNT);
  return fnt_head;
 }
