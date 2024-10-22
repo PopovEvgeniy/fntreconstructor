@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.7.4
+                                 Version 0.7.4.1
 
 System requirement
 
@@ -16,12 +16,12 @@ Give 3 command-line arguments to compile a font: a text file name, a graphics fi
 
 Exit codes
 
-0 - Operation was successfully completed.
-1 - Can't open the input file.
-2 - Can't create the output file.
-3 - Can't jump to the target offset.
-4 - Can't allocate memory.
-5 - Invalid format.
+0: Operation was successfully completed.
+1: Can't open the input file.
+2: Can't create the output file.
+3: Can't jump to the target offset.
+4: Can't allocate memory.
+5: Invalid format.
 
 License
 
@@ -51,18 +51,19 @@ You can send me a letter at tuzik87@inbox.ru.
 Version history
 
 0.1: Initial version.
-0.2 — 0.5: Small changes.
-0.6 — The source code is improved. Linux support added.
+0.2-0.5: The small changes.
+0.6: The source code is improved. Linux support added.
 0.6.0.1: Documentation updated.
-0.6.1 — 0.6.2: Small changes.
+0.6.1-0.6.2: The small changes.
 0.6.3: The command-line argument handling is improved.
 0.6.3.1: The makefile updated.
-0.6.4 — 0.6.5: Small changes.
-0.6.6 — 0.6.7: A small bug is fixed.
-0.6.8 — 0.6.9: Small changes.
-0.6.9.1 — 0.6.9.2: The makefile updated.
+0.6.4-0.6.5: The small changes.
+0.6.6-0.6.7: A small bug is fixed.
+0.6.8-0.6.9: The small changes.
+0.6.9.1-0.6.9.2: The makefile updated.
 0.6.9.3: Documentation updated.
-0.7 — 0.7.2: Small changes.
+0.7-0.7.2: The small changes.
 0.7.3: Visual C++ support improved.
 0.7.3.1: Documentation updated.
-0.7.4: Small changes.
+0.7.4: The small changes.
+0.7.4.1: Documentation updated.
