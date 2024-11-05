@@ -2,11 +2,11 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.7.4.2
+                                 Version 0.7.5
 
-System requirement
+System requirements
 
-64 kilobytes of free space on storage media.
+36 kilobytes of free space on storage media.
 
 Description and usage
 
@@ -29,7 +29,7 @@ This program is distributed under GNU GENERAL PUBLIC LICENSE.
 
 Source code
 
-The  code was compiled under Open Watcom.
+The code was compiled under Tiny C Compiler.
 But you can compile it with any modern C compiler.
 The source code can be compiled for a wide range of operating systems, but you need to create a makefile or a build script by yourself.
 I provide only two things: the binary file for Windows and the makefile for Linux.
@@ -67,3 +67,4 @@ Version history
 0.7.3.1: The documentation has been updated.
 0.7.4: The small changes.
 0.7.4.1-0.7.4.2: The documentation has been updated.
+0.7.5: The source code was recompiled under Tiny C Compiler.
