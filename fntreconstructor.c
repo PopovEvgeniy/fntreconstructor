@@ -47,8 +47,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.7.3");
- puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2024 years");
+ puts("Version 0.7.6");
+ puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -184,8 +184,8 @@ char* get_name(const char *name,const char *ext)
  size_t length;
  length=strlen(name)+strlen(ext);
  result=get_string_memory(length);
- strcpy(result,name);
- return strcat(result,ext);
+ sprintf(result,"%s%s",name,ext);
+ return result;
 }
 
 void check_signature(const char *signature)

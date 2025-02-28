@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.7.5
+                                 Version 0.7.6
 
 System requirements
 
@@ -68,3 +68,4 @@ Version history
 0.7.4: The small changes.
 0.7.4.1-0.7.4.2: The documentation has been updated.
 0.7.5: The source code was recompiled under Tiny C Compiler.
+0.7.6: The small changes.
