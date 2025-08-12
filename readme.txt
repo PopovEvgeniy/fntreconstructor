@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.7.7
+                                 Version 0.7.7.1
 
 System requirements
 
@@ -25,7 +25,7 @@ Exit codes
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 Source code
 
@@ -43,10 +43,6 @@ Follow these steps:
 3.
 Run as root to install: make install
 Run as root to uninstall: make uninstall
-
-Contact
-
-You can send me a letter at tuzik87@inbox.ru.
 
 Version history
 
@@ -69,3 +65,4 @@ Version history
 0.7.4.1-0.7.4.2: The documentation has been updated.
 0.7.5: The source code was recompiled under Tiny C Compiler.
 0.7.6-0.7.7: The small changes.
+0.7.7.1: The documentation has been updated.
