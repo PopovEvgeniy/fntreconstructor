@@ -47,9 +47,9 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.7.7");
+ puts("Version 0.7.8");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
- puts("This program is distributed under GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
 
@@ -192,7 +192,7 @@ void check_signature(const char *signature)
 {
  if (strcmp(signature,"ElecbyteFnt")!=0)
  {
-  puts("The bad signature of a font file");
+  puts("The invalid format");
   exit(5);
  }
 
