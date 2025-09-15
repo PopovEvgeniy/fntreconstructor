@@ -2,19 +2,15 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.7.8
+                                 Version 0.7.8.1
 
-System requirements
-
-68 kilobytes of free space on storage media.
-
-Description and usage
+The program description.
 
 This program lets you compile and decompile fonts for the MUGEN game engine.
 Give a target file name as the command-line argument to decompile a font.
 Give 3 command-line arguments to compile a font: a text file name, a graphic file name, and the font file name.
 
-Exit codes
+Exit codes.
 
 0: The operation was successfully completed.
 1: Can't open the input file.
@@ -23,18 +19,18 @@ Exit codes
 4: Can't allocate memory.
 5: The invalid format.
 
-License
+License.
 
 This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
-Source code
+The source code.
 
 The code was compiled under Open Watcom.
 But you can compile it with any modern C compiler.
 The source code can be compiled for a wide range of operating systems, but you need to create a makefile or a build script by yourself.
 I provide only two things: the binary file for Windows and the makefile for Linux.
 
-Install and uninstall under Linux
+Install and uninstall under Linux.
 
 Follow these steps:
 
@@ -44,9 +40,9 @@ Follow these steps:
 Run as root to install: make install
 Run as root to uninstall: make uninstall
 
-Version history
+Version history.
 
-0.1: Initial version.
+0.1: The initial version.
 0.2-0.5: The small changes.
 0.6: The source code has improved. Linux support has been added.
 0.6.0.1: The documentation has been updated.
@@ -67,3 +63,4 @@ Version history
 0.7.6-0.7.7: The small changes.
 0.7.7.1: The documentation has been updated.
 0.7.8: The small changes.
+0.7.8.1: The documentation has been updated.
