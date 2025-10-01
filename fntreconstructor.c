@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.8.2");
+ puts("Version 0.8.8");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -224,12 +224,18 @@ void write_head(const FNT *head,FILE *output)
 
 FNT prepare_head()
 {
- FNT fnt_head;
- memset(&fnt_head,0,sizeof(FNT));
- strncpy(fnt_head.signature,"ElecbyteFnt",12);
- strncpy(fnt_head.comment,"This font was made by FNT RECONSTRUCTOR.",40);
- fnt_head.pcx_offset=(unsigned long int)sizeof(FNT);
- return fnt_head;
+ FNT head;
+ strncpy(head.signature,"ElecbyteFnt",12);
+ head.version[0]=0;
+ head.version[1]=1;
+ head.version[2]=0;
+ head.version[3]=0;
+ head.pcx_offset=sizeof(FNT);
+ head.pcx_size=0;
+ head.text_offset=0;
+ head.text_size=0;
+ strncpy(head.comment,"This font was made by FNT RECONSTRUCTOR.",40);
+ return head;
 }
 
 void decompile_font(const char *fnt_file_name)
