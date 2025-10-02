@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.8.8");
+ puts("Version 0.8.9");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -201,7 +201,7 @@ char *get_name(const char *name,const char *ext)
 
 void check_signature(const char *signature)
 {
- if (strcmp(signature,"ElecbyteFnt")!=0)
+ if (strncmp(signature,"ElecbyteFnt",12)!=0)
  {
   puts("The invalid format");
   exit(5);
