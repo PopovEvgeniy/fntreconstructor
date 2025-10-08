@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.8.9");
+ puts("Version 0.9");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -119,11 +119,10 @@ void data_dump(FILE *input,FILE *output,const size_t length)
 {
  char *buffer;
  size_t current,elapsed,block;
- current=0;
  elapsed=0;
  block=4096;
  buffer=get_memory(block);
- while (current<length)
+ for (current=0;current<length;current+=block)
  {
   elapsed=length-current;
   if (elapsed<block)
@@ -132,7 +131,6 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   }
   fread(buffer,sizeof(char),block,input);
   fwrite(buffer,sizeof(char),block,output);
-  current+=block;
  }
  free(buffer);
 }
