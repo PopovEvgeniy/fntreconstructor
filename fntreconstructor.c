@@ -27,12 +27,12 @@ int main(int argc, char *argv[])
  switch (argc)
  {
   case 2:
-  puts("Extracting a font data...");
+  puts("Extracting font data...");
   decompile_font(argv[1]);
   puts("The work has been finished");
   break;
   case 4:
-  puts("Creating a font file.Please wait...");
+  puts("Creating a font file. Please wait...");
   compile_font(argv[1],argv[2],argv[3]);
   puts("The work has been finished");
   break;
@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.1");
+ puts("Version 0.9.2");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
