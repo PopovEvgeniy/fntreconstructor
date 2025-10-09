@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.2");
+ puts("Version 0.9.3");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -224,6 +224,7 @@ FNT prepare_head()
 {
  FNT head;
  strncpy(head.signature,"ElecbyteFnt",12);
+ head.signature[11]=0;
  head.version[0]=0;
  head.version[1]=1;
  head.version[2]=0;
