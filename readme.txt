@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 0.9.3
+                                 Version 0.9.4
 
 The program description.
 
@@ -47,7 +47,7 @@ Version history.
 0.6: The source code has improved. Linux support has been added.
 0.6.0.1: The documentation has been updated.
 0.6.1-0.6.2: The small changes.
-0.6.3: The command-line arguments handling has improved.
+0.6.3: The command-line argument handling has improved.
 0.6.3.1: The makefile has been updated.
 0.6.4-0.6.5: The small changes.
 0.6.6-0.6.7: A small bug has been fixed.
@@ -72,3 +72,4 @@ Version history.
 0.9.1: The decompilation process has improved.
 0.9.2: The small changes.
 0.9.3: A small bug has been fixed.
+0.9.4: The small changes.

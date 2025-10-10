@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.3");
+ puts("Version 0.9.4");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -55,7 +55,7 @@ void show_intro()
 
 void command_line_help()
 {
- puts("You give a wrong command-line arguments!");
+ puts("You give the wrong command-line arguments!");
  puts("The command-line argument for decompiling a font: a font file");
  puts("The command-line arguments for compiling a font: a graphic file, a text file, and the font file");
 }
