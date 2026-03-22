@@ -3,18 +3,18 @@
 
 void show_intro();
 void command_line_help();
-void go_offset(FILE *file,const unsigned long int offset);
-unsigned long int get_file_size(FILE *file);
+void go_offset(FILE *target,const unsigned long int offset);
+unsigned long int get_file_size(FILE *target);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
 char *get_memory(const size_t length);
+void check_signature(const char *signature);
 void data_dump(FILE *input,FILE *output,const size_t length);
 void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
 size_t get_extension_position(const char *source);
 char *get_short_name(const char *name);
 char *get_name(const char *name,const char *ext);
-void check_signature(const char *signature);
 FNT read_fnt_head(FILE *file);
 void write_head(const FNT *head,FILE *output);
 FNT prepare_head();
@@ -47,8 +47,8 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.4");
- puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2025 years");
+ puts("Version 0.9.5");
+ puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
 }
@@ -60,22 +60,12 @@ void command_line_help()
  puts("The command-line arguments for compiling a font: a graphic file, a text file, and the font file");
 }
 
-void go_offset(FILE *file,const unsigned long int offset)
-{
- if (fseek(file,offset,SEEK_SET)!=0)
- {
-  puts("Can't jump to the target offset");
-  exit(3);
- }
-
-}
-
-unsigned long int get_file_size(FILE *file)
+unsigned long int get_file_size(FILE *target)
 {
  unsigned long int length;
- fseek(file,0,SEEK_END);
- length=ftell(file);
- rewind(file);
+ fseek(target,0,SEEK_END);
+ length=ftell(target);
+ rewind(target);
  return length;
 }
 
@@ -103,6 +93,16 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
+void go_offset(FILE *file,const unsigned long int offset)
+{
+ if (fseek(file,offset,SEEK_SET)!=0)
+ {
+  puts("Can't jump to the target offset");
+  exit(3);
+ }
+
+}
+
 char *get_memory(const size_t length)
 {
  char *memory=NULL;
@@ -113,6 +113,16 @@ char *get_memory(const size_t length)
   exit(4);
  }
  return memory;
+}
+
+void check_signature(const char *signature)
+{
+ if (strncmp(signature,"ElecbyteFnt",12)!=0)
+ {
+  puts("The invalid format");
+  exit(5);
+ }
+
 }
 
 void data_dump(FILE *input,FILE *output,const size_t length)
@@ -162,17 +172,18 @@ void write_output_file(FILE *input,const char *name,const size_t length)
 
 size_t get_extension_position(const char *source)
 {
- size_t index;
- for(index=strlen(source);index>0;--index)
+ size_t index,position;
+ position=strlen(source);
+ for(index=position;index>0;--index)
  {
   if(source[index]=='.')
   {
+   position=index;
    break;
   }
 
  }
- if (index==0) index=strlen(source);
- return index;
+ return position;
 }
 
 char *get_short_name(const char *name)
@@ -195,16 +206,6 @@ char *get_name(const char *name,const char *ext)
   sprintf(result,"%s%s",output,ext);
   free(output);
   return result;
-}
-
-void check_signature(const char *signature)
-{
- if (strncmp(signature,"ElecbyteFnt",12)!=0)
- {
-  puts("The invalid format");
-  exit(5);
- }
-
 }
 
 FNT read_fnt_head(FILE *file)
