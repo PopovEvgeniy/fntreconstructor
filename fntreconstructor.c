@@ -47,7 +47,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.5");
+ puts("Version 0.9.6");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -93,9 +93,9 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
-void go_offset(FILE *file,const unsigned long int offset)
+void go_offset(FILE *target,const unsigned long int offset)
 {
- if (fseek(file,offset,SEEK_SET)!=0)
+ if (fseek(target,offset,SEEK_SET)!=0)
  {
   puts("Can't jump to the target offset");
   exit(3);
@@ -141,6 +141,7 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   }
   fread(buffer,sizeof(char),block,input);
   fwrite(buffer,sizeof(char),block,output);
+  fflush(output);
  }
  free(buffer);
 }
@@ -157,6 +158,7 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
  {
   fread(buffer,sizeof(char),length,input);
   fwrite(buffer,sizeof(char),length,output);
+  fflush(output);
   free(buffer);
  }
 
