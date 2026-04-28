@@ -3,10 +3,12 @@
 
 void show_intro();
 void command_line_help();
-void go_offset(FILE *target,const unsigned long int offset);
 unsigned long int get_file_size(FILE *target);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
+void read_data(void *data,const size_t length,FILE *input);
+void write_data(const void *data,const size_t length,FILE *output);
+void go_offset(FILE *target,const unsigned long int offset);
 char *get_memory(const size_t length);
 void check_signature(const char *signature);
 void data_dump(FILE *input,FILE *output,const size_t length);
@@ -15,7 +17,7 @@ void write_output_file(FILE *input,const char *name,const size_t length);
 size_t get_extension_position(const char *source);
 char *get_short_name(const char *name);
 char *get_name(const char *name,const char *ext);
-FNT read_fnt_head(FILE *file);
+FNT read_fnt_head(FILE *input);
 void write_head(const FNT *head,FILE *output);
 FNT prepare_head();
 void decompile_font(const char *fnt_file_name);
@@ -47,7 +49,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 0.9.7");
+ puts("Version 0.9.8");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -93,12 +95,34 @@ FILE *create_output_file(const char *name)
  return target;
 }
 
+void read_data(void *data,const size_t length,FILE *input)
+{
+ fread(data,length,sizeof(char),input);
+ if (ferror(input)!=0)
+ {
+  puts("Can't read data!");
+  exit(3);
+ }
+
+}
+
+void write_data(const void *data,const size_t length,FILE *output)
+{
+ fwrite(data,length,sizeof(char),output);
+ if (ferror(output)!=0)
+ {
+  puts("Can't write data!");
+  exit(4);
+ }
+
+}
+
 void go_offset(FILE *target,const unsigned long int offset)
 {
  if (fseek(target,offset,SEEK_SET)!=0)
  {
   puts("Can't jump to the target offset");
-  exit(3);
+  exit(5);
  }
 
 }
@@ -110,7 +134,7 @@ char *get_memory(const size_t length)
  if(memory==NULL)
  {
   puts("Can't allocate memory");
-  exit(4);
+  exit(6);
  }
  return memory;
 }
@@ -120,7 +144,7 @@ void check_signature(const char *signature)
  if (strncmp(signature,"ElecbyteFnt",12)!=0)
  {
   puts("The invalid format");
-  exit(5);
+  exit(7);
  }
 
 }
@@ -139,8 +163,8 @@ void data_dump(FILE *input,FILE *output,const size_t length)
   {
    block=elapsed;
   }
-  fread(buffer,sizeof(char),block,input);
-  fwrite(buffer,sizeof(char),block,output);
+  read_data(buffer,block,input);
+  write_data(buffer,block,output);
  }
  free(buffer);
 }
@@ -155,8 +179,8 @@ void fast_data_dump(FILE *input,FILE *output,const size_t length)
  }
  else
  {
-  fread(buffer,sizeof(char),length,input);
-  fwrite(buffer,sizeof(char),length,output);
+  read_data(buffer,length,input);
+  write_data(buffer,length,output);
   free(buffer);
  }
 
@@ -208,17 +232,17 @@ char *get_name(const char *name,const char *ext)
   return result;
 }
 
-FNT read_fnt_head(FILE *file)
+FNT read_fnt_head(FILE *input)
 {
  FNT fnt;
- fread(&fnt,sizeof(FNT),1,file);
+ read_data(&fnt,sizeof(FNT),input);
  check_signature(fnt.signature);
  return fnt;
 }
 
 void write_head(const FNT *head,FILE *output)
 {
- fwrite(head,sizeof(FNT),1,output);
+ write_data(head,sizeof(FNT),output);
 }
 
 FNT prepare_head()
