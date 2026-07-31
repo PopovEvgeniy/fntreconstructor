@@ -3,7 +3,6 @@
 
 void show_intro();
 void command_line_help();
-unsigned long int get_file_size(FILE *target);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
 void read_data(void *data,const size_t length,FILE *input);
@@ -11,6 +10,7 @@ void write_data(const void *data,const size_t length,FILE *output);
 void go_offset(FILE *target,const unsigned long int offset);
 char *get_memory(const size_t length);
 void check_signature(const char *signature);
+unsigned long int get_file_size(FILE *target);
 void data_dump(FILE *input,FILE *output,const size_t length);
 void fast_data_dump(FILE *input,FILE *output,const size_t length);
 void write_output_file(FILE *input,const char *name,const size_t length);
@@ -49,7 +49,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 1.0");
+ puts("Version 1.0.1");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -60,15 +60,6 @@ void command_line_help()
  puts("You give the wrong command-line arguments!");
  puts("The command-line argument for decompiling a font: a font file");
  puts("The command-line arguments for compiling a font: a graphic file, a text file, and the font file");
-}
-
-unsigned long int get_file_size(FILE *target)
-{
- unsigned long int length=0;
- fseek(target,0,SEEK_END);
- length=ftell(target);
- rewind(target);
- return length;
 }
 
 FILE *open_input_file(const char *name)
@@ -107,7 +98,7 @@ FILE *create_output_file(const char *name)
 
 void read_data(void *data,const size_t length,FILE *input)
 {
- fread(data,length,sizeof(char),input);
+ fread(data,sizeof(char),length,input);
  if (ferror(input)!=0)
  {
   puts("Can't read data!");
@@ -118,7 +109,7 @@ void read_data(void *data,const size_t length,FILE *input)
 
 void write_data(const void *data,const size_t length,FILE *output)
 {
- fwrite(data,length,sizeof(char),output);
+ fwrite(data,sizeof(char),length,output);
  if (ferror(output)!=0)
  {
   puts("Can't write data!");
@@ -157,6 +148,19 @@ void check_signature(const char *signature)
   exit(7);
  }
 
+}
+
+unsigned long int get_file_size(FILE *target)
+{
+ unsigned long int length=0;
+ if (fseek(target,0,SEEK_END)!=0)
+ {
+  puts("Can't get the file size!");
+  exit(8);
+ }
+ length=ftell(target);
+ rewind(target);
+ return length;
 }
 
 void data_dump(FILE *input,FILE *output,const size_t length)
