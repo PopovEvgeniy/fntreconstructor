@@ -2,13 +2,13 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 1.0.3
+                                 Version 1.0.3.1
 
 The program description.
 
 This program lets you compile and decompile fonts for the MUGEN game engine.
 Give a target file name as the command-line argument to decompile a font.
-Give 3 command-line arguments to compile a font: a text file name, a graphic file name, and the font file name.
+Give 3 command-line arguments to compile a font: a graphic file name, a text file name, and the font file name.
 
 Exit codes.
 
@@ -80,3 +80,4 @@ Version history.
 0.9.9: A small bug has been fixed.
 1.0-1.0.1: The small changes.
 1.0.2-1.0.3: A small bug has been fixed.
+1.0.3.1: The documentation has been updated.
