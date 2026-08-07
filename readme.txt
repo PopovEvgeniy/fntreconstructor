@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 1.0.3.1
+                                 Version 1.0.4
 
 The program description.
 
@@ -81,3 +81,4 @@ Version history.
 1.0-1.0.1: The small changes.
 1.0.2-1.0.3: A small bug has been fixed.
 1.0.3.1: The documentation has been updated.
+1.0.4: The small changes.

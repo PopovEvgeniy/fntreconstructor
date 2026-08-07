@@ -49,7 +49,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 1.0.3");
+ puts("Version 1.0.4");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -315,21 +315,18 @@ void decompile_font(const char *fnt_file_name)
 {
  FILE *fnt_file=NULL;
  char *output_file_name=NULL;
- char *name_without_extension=NULL;
  FNT fnt;
  fnt_file=open_input_file(fnt_file_name);
  fnt=read_fnt_head(fnt_file);
  go_offset(fnt_file,fnt.pcx_offset);
- name_without_extension=get_name_without_extension(fnt_file_name);
- output_file_name=get_name(name_without_extension,".pcx");
+ output_file_name=get_name(fnt_file_name,".pcx");
  write_output_file(fnt_file,output_file_name,(size_t)fnt.pcx_size);
  free(output_file_name);
  go_offset(fnt_file,fnt.text_offset);
- output_file_name=get_name(name_without_extension,".txt");
+ output_file_name=get_name(fnt_file_name,".txt");
  write_output_file(fnt_file,output_file_name,(size_t)fnt.text_size);
  fclose(fnt_file);
  free(output_file_name);
- free(name_without_extension);
 }
 
 void compile_font(const char *pcx_name,const char *text_file,const char *fnt_file)
