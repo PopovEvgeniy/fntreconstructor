@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 1.0.4
+                                 Version 1.0.5
 
 The program description.
 
@@ -21,6 +21,7 @@ Exit codes.
 6: Can't allocate memory.
 7: The invalid format.
 8: Can't get the file size!
+9: The command-line arguments is invalid!
 
 License.
 
@@ -82,3 +83,4 @@ Version history.
 1.0.2-1.0.3: A small bug has been fixed.
 1.0.3.1: The documentation has been updated.
 1.0.4: The small changes.
+1.0.5: The file processing has improved.

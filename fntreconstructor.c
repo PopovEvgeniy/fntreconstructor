@@ -1,8 +1,10 @@
 #include "fntreconstructor.h"
 #include "format.h"
+#include "exitcode.h"
 
 void show_intro();
 void command_line_help();
+void show_error(const char *message);
 FILE *open_input_file(const char *name);
 FILE *create_output_file(const char *name);
 void read_data(void *data,const size_t length,FILE *input);
@@ -40,6 +42,7 @@ int main(int argc, char *argv[])
   break;
   default:
   command_line_help();
+  exit(COMMAND_LINE_ARGUMENTS_ERROR);
   break;
  }
  return 0;
@@ -49,7 +52,7 @@ void show_intro()
 {
  putchar('\n');
  puts("FNT RECONSTRUCTOR");
- puts("Version 1.0.4");
+ puts("Version 1.0.5");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -62,19 +65,26 @@ void command_line_help()
  puts("The command-line arguments for compiling a font: a graphic file, a text file, and the font file");
 }
 
+void show_error(const char *message)
+{
+ fputc('\n',stderr);
+ fputs(message,stderr);
+ fputc('\n',stderr);
+}
+
 FILE *open_input_file(const char *name)
 {
  FILE *target=NULL;
  if (name==NULL)
  {
-  puts("Can't open the input file");
-  exit(1);
+  show_error("Can't open the input file");
+  exit(OPEN_FILE_ERROR);
  }
  target=fopen(name,"rb");
  if (target==NULL)
  {
-  puts("Can't open the input file");
-  exit(1);
+  show_error("Can't open the input file");
+  exit(OPEN_FILE_ERROR);
  }
  return target;
 }
@@ -84,36 +94,34 @@ FILE *create_output_file(const char *name)
  FILE *target=NULL;
  if (name==NULL)
  {
-  puts("Can't create the ouput file");
-  exit(2);
+  show_error("Can't create the ouput file");
+  exit(CREATE_FILE_ERROR);
  }
  target=fopen(name,"wb");
  if (target==NULL)
  {
-  puts("Can't create the ouput file");
-  exit(2);
+  show_error("Can't create the ouput file");
+  exit(CREATE_FILE_ERROR);
  }
  return target;
 }
 
 void read_data(void *data,const size_t length,FILE *input)
 {
- fread(data,sizeof(char),length,input);
- if (ferror(input)!=0)
+ if (fread(data,sizeof(char),length,input)<length)
  {
-  puts("Can't read data!");
-  exit(3);
+  show_error("Can't read data!");
+  exit(READ_DATA_ERROR);
  }
 
 }
 
 void write_data(const void *data,const size_t length,FILE *output)
 {
- fwrite(data,sizeof(char),length,output);
- if (ferror(output)!=0)
+ if (fwrite(data,sizeof(char),length,output)<length)
  {
-  puts("Can't write data!");
-  exit(4);
+  show_error("Can't write data!");
+  exit(WRITE_DATA_ERROR);
  }
 
 }
@@ -122,8 +130,8 @@ void go_offset(FILE *target,const unsigned long int offset)
 {
  if (fseek(target,offset,SEEK_SET)!=0)
  {
-  puts("Can't jump to the target offset");
-  exit(5);
+  show_error("Can't jump to the target offset");
+  exit(SET_FILE_POSITION_ERROR);
  }
 
 }
@@ -134,8 +142,8 @@ char *get_memory(const size_t length)
  memory=(char*)calloc(length,sizeof(char));
  if(memory==NULL)
  {
-  puts("Can't allocate memory");
-  exit(6);
+  show_error("Can't allocate memory");
+  exit(MEMORY_ALLOCATION_ERROR);
  }
  return memory;
 }
@@ -144,8 +152,8 @@ void check_signature(const char *signature)
 {
  if (strncmp(signature,"ElecbyteFnt",12)!=0)
  {
-  puts("The invalid format");
-  exit(7);
+  show_error("The invalid format");
+  exit(INVALID_FORMAT_ERROR);
  }
 
 }
@@ -155,8 +163,8 @@ unsigned long int get_file_size(FILE *target)
  unsigned long int length=0;
  if (fseek(target,0,SEEK_END)!=0)
  {
-  puts("Can't get the file size!");
-  exit(8);
+  show_error("Can't get the file size!");
+  exit(GET_FILE_SIZE_ERROR);
  }
  length=ftell(target);
  rewind(target);
@@ -296,6 +304,7 @@ void write_head(const FNT *head,FILE *output)
 FNT prepare_head()
 {
  FNT head;
+ memset(&head,0,sizeof(FNT));
  strncpy(head.signature,"ElecbyteFnt",12);
  head.signature[11]=0;
  head.version[0]=0;
