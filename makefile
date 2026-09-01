@@ -4,5 +4,5 @@ install:
 	@chmod ugo+rx /bin/fntreconstructor
 	@echo Installation was successfully completed
 uninstall:
-	@rm -f /bin/fntreconstructor
+	@rm /bin/fntreconstructor
 	@echo Uninstallation was successfully completed

@@ -51,8 +51,7 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FNT RECONSTRUCTOR");
- puts("Version 1.0.6");
+ puts("FNT RECONSTRUCTOR 1.0.7");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
  puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
  putchar('\n');
@@ -136,7 +135,7 @@ char *get_memory(const size_t length)
 {
  char *memory=NULL;
  memory=(char*)calloc(length,sizeof(char));
- if(memory==NULL)
+ if (memory==NULL)
  {
   show_error("Can't allocate memory");
   exit(MEMORY_ALLOCATION_ERROR);
