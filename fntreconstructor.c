@@ -30,10 +30,17 @@ int main(int argc, char *argv[])
  show_intro();
  switch (argc)
  {
+  case 1:
+  command_line_help();
+  exit(COMMAND_LINE_ARGUMENTS_ERROR);
   case 2:
   puts("Extracting font data...");
   decompile_font(argv[1]);
   puts("The work has been finished");
+  break;
+  case 3:
+  puts("You don't give the font file name");
+  exit(COMMAND_LINE_ARGUMENTS_ERROR);
   break;
   case 4:
   puts("Creating a font file. Please wait...");
@@ -41,7 +48,7 @@ int main(int argc, char *argv[])
   puts("The work has been finished");
   break;
   default:
-  command_line_help();
+  puts("You gave too many command-line arguments");
   exit(COMMAND_LINE_ARGUMENTS_ERROR);
   break;
  }
@@ -51,9 +58,9 @@ int main(int argc, char *argv[])
 void show_intro()
 {
  putchar('\n');
- puts("FNT RECONSTRUCTOR 1.0.7");
+ puts("FNT RECONSTRUCTOR 1.0.8");
  puts("Mugen font tool by Popov Evgeniy Alekseyevich, 2011-2026 years");
- puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE");
+ puts("This program is distributed under the GNU GENERAL PUBLIC LICENSE (version 2 or later) terms");
  putchar('\n');
 }
 
