@@ -2,7 +2,7 @@
 
                      Mugen font tool by Popov Evgeniy Alekseyevich
 
-                                 Version 1.0.8
+                                 Version 1.0.8.1
 
 The program description.
 
@@ -21,7 +21,7 @@ Exit codes.
 6: Can't allocate memory.
 7: The invalid format.
 8: Can't get the file size!
-9: The command-line arguments is invalid!
+9: The command-line arguments are invalid!
 
 License.
 
@@ -48,18 +48,18 @@ Version history.
 
 0.1: The initial version.
 0.2-0.5: The small changes.
-0.6: The source code has improved. Linux support has been added.
+0.6: The source code has been improved. Linux support has been added.
 0.6.0.1: The documentation has been updated.
 0.6.1-0.6.2: The small changes.
-0.6.3: The command-line argument handling has improved.
+0.6.3: The command-line argument handling has been improved.
 0.6.3.1: The makefile has been updated.
 0.6.4-0.6.5: The small changes.
-0.6.6-0.6.7: A small bug has been fixed.
+0.6.6-0.6.7: The small bug has been fixed.
 0.6.8-0.6.9: The small changes.
 0.6.9.1-0.6.9.2: The makefile has been updated.
 0.6.9.3: The documentation has been updated.
 0.7-0.7.2: The small changes.
-0.7.3: Visual C++ support has improved.
+0.7.3: Visual C++ support has been improved.
 0.7.3.1: The documentation has been updated.
 0.7.4: The small changes.
 0.7.4.1-0.7.4.2: The documentation has been updated.
@@ -68,20 +68,21 @@ Version history.
 0.7.7.1: The documentation has been updated.
 0.7.8: The small changes.
 0.7.8.1: The documentation has been updated.
-0.7.9: The decompilation process has improved, and the compilation process has improved.
+0.7.9: The decompilation process has been improved, and the compilation process has been improved.
 0.8-0.8.2: The small changes.
-0.8.3: The code portability has improved.
-0.8.4-0.8.6: A small bug has been fixed.
+0.8.3: The code portability has been improved.
+0.8.4-0.8.6: The small bug has been fixed.
 0.8.7-0.9: The small changes.
-0.9.1: The decompilation process has improved.
+0.9.1: The decompilation process has been improved.
 0.9.2: The small changes.
-0.9.3: A small bug has been fixed.
+0.9.3: The small bug has been fixed.
 0.9.4-0.9.7: The small changes.
-0.9.8: The file processing has improved.
-0.9.9: A small bug has been fixed.
+0.9.8: The file processing has been improved.
+0.9.9: The small bug has been fixed.
 1.0-1.0.1: The small changes.
-1.0.2-1.0.3: A small bug has been fixed.
+1.0.2-1.0.3: The small bug has been fixed.
 1.0.3.1: The documentation has been updated.
 1.0.4: The small changes.
-1.0.5-1.0.6: The file processing has improved.
+1.0.5-1.0.6: The file processing has been improved.
 1.0.7-1.0.8: The small changes.
+1.0.8.1: The documentation has been updated.
